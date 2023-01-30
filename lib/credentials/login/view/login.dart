@@ -123,7 +123,7 @@ class _LoginUiState extends State<LoginUi> {
                             child: TextField(
                               controller: loginController.mobileController,
                               keyboardType: TextInputType.number,
-                              decoration:   InputDecoration(
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
                                 icon: Icon(Icons.mobile_friendly),
                                 enabledBorder: InputBorder.none,
@@ -176,9 +176,13 @@ class _LoginUiState extends State<LoginUi> {
                             showBottomSheet(
                               context: context,
                               builder: (context) {
-                                return Container();
+                                return Container(
+                                  height: 30,
+                                  width: 30,
+                                );
                               },
                             );
+                            setState(() {});
                             // Get.to(const ForgetPin());
                           },
                         ),

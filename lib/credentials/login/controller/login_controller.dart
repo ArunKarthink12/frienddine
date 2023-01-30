@@ -1,5 +1,5 @@
 import 'dart:developer';
- 
+
 // import '../model/response/login_response.dart';
 import '../../../../all_packages.dart';
 import '../../../../global/global_function.dart';
@@ -12,7 +12,7 @@ class LoginController extends GetxController {
   RxBool? checkLogin = false.obs;
   TextEditingController mobileController = TextEditingController();
   RxList<Loginmodel> getloginmodel = <Loginmodel>[].obs;
-
+  var token;
   TextEditingController mPinController = TextEditingController();
   var clint = LoginService();
   Future loginController({context}) async {
@@ -36,6 +36,7 @@ class LoginController extends GetxController {
         if (response != null) {
           getloginmodel.add(response);
           log(getloginmodel[0].data.toString());
+          token = getloginmodel[0].data.data;
           // Get.to(const FoodCategories());
           Get.to(const Categories());
           // _sharedPreferences.setString(Constants.authToken, response.token!);

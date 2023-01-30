@@ -88,9 +88,12 @@ class _FoodCategoriesState extends State<FoodCategories> {
                           Spacer(),
                           InkWell(
                             onTap: () {
-                              Get.to(FoodMenu(
+                              Get.to(
+                                  //  FoodMenu()
+                                  FoodMenu(
                                 foodCategoriesController
-                                    .friendsresponse[0].data[index].hashid,
+                                    .friendsresponse[0].data[index].hashid
+                                    .toString(),
                               ));
                             },
                             child: Container(

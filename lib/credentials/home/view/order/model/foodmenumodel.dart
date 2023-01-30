@@ -1,72 +1,61 @@
-class FoodMenuModel {
-  bool? success;
-  List<Data>? data;
-  String? message;
+// To parse this JSON data, do
+//
+//     final productlistModel = productlistModelFromJson(jsonString);
 
-  FoodMenuModel({this.success, this.data, this.message});
+import 'dart:convert';
 
-  FoodMenuModel.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
-      });
-    }
-    message = json['message'];
-  }
+ProductlistModel productlistModelFromJson(String str) => ProductlistModel.fromJson(json.decode(str));
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    data['message'] = this.message;
-    return data;
-  }
+String productlistModelToJson(ProductlistModel data) => json.encode(data.toJson());
+
+class ProductlistModel {
+    ProductlistModel({
+        required this.success,
+        required this.data,
+        required this.message,
+    });
+
+    bool success;
+    List<Datum> data;
+    String message;
+
+    factory ProductlistModel.fromJson(Map<String, dynamic> json) => ProductlistModel(
+        success: json["success"],
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        message: json["message"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "success": success,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "message": message,
+    };
 }
 
-class Data {
-  String? hashid;
-  String? name;
-  int? price;
-  String? image;
+class Datum {
+    Datum({
+        required this.hashid,
+        required this.name,
+        required this.price,
+        required this.image,
+    });
 
-  Data({this.hashid, this.name, this.price, this.image});
+    String hashid;
+    String name;
+    int price;
+    String image;
 
-  Data.fromJson(Map<String, dynamic> json) {
-    hashid = json['hashid'];
-    name = json['name'];
-    price = json['price'];
-    image = json['image'];
-  }
+    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        hashid: json["hashid"],
+        name: json["name"],
+        price: json["price"],
+        image: json["image"],
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hashid'] = this.hashid;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['image'] = this.image;
-    return data;
-  }
-}
-
-class FoodMenuRequest {
-  String? category;
-  String? vendor;
-
-  FoodMenuRequest({this.category, this.vendor});
-
-  FoodMenuRequest.fromJson(Map<String, dynamic> json) {
-    category = json[' category'];
-    vendor = json['vendor'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data[' category'] = this.category;
-    data['vendor'] = this.vendor;
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "hashid": hashid,
+        "name": name,
+        "price": price,
+        "image": image,
+    };
 }

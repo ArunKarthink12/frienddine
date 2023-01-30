@@ -8,7 +8,7 @@ import '../model/foodorderdetailsmodel.dart';
 class FoodOrderDetailsController extends GetxController {
   var foodOrderDetails = FoodOrderDetailsResponseModel().obs;
   void foodOrderApi(
-    FoodMenuRequest foodMenuRequest,
+    // FoodMenuRequest foodMenuRequest,
     String endPoint,
   ) async {
     try {

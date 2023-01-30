@@ -1,3 +1,5 @@
+import 'package:friendsdine/extension/responsive.dart';
+
 import '../../../../../../all_packages.dart';
 import '../../../../../../global/global_function.dart';
 import '../controller/foodordercontroller.dart';
@@ -7,7 +9,7 @@ import '../controller/foodordercontroller.dart';
 class Order extends StatefulWidget {
   var data;
   String name;
-  Order(this.data,this.name);
+  Order(this.data, this.name);
 
   @override
   State<Order> createState() => _OrderState();
@@ -17,7 +19,7 @@ class _OrderState extends State<Order> {
   TextEditingController phOrderController = TextEditingController();
   TextEditingController nameController = TextEditingController();
 
-  var foodMenuController = Get.put(FoodOrderController());
+  FoodOrderController foodMenuController = Get.put(FoodOrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class _OrderState extends State<Order> {
                 builder: (foodorder) {
                   return Column(children: [
                     Container(
-                      width: 1.sw,
-                      height: 0.3.sh,
+                      width: MediaQuery.of(context).size.width,
+                      height: 24.0.hp,
                       decoration: const BoxDecoration(
                           shape: BoxShape.rectangle,
                           gradient: LinearGradient(
@@ -40,47 +42,67 @@ class _OrderState extends State<Order> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: 50.h,
+                              height: 5.0.hp,
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 25.0),
-                              child: Text(
-                                'Hotel Annalakshmi',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.normal),
-                              ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 18.0.sp),
+                              child: RichText(
+                                  text: TextSpan(
+                                      text: 'Hotel Annalakshmi',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.0.sp,
+                                          fontWeight: FontWeight.normal,
+                                          fontStyle: FontStyle.normal),
+                                      children: [
+                                    TextSpan(
+                                        text:
+                                            '\nChettinad,South Indian, Chinese',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18.0.sp,
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle: FontStyle.normal)),
+                                    TextSpan(
+                                      text:
+                                          ' \nSakthy traders, Gandhi Nagar, Coimbatore',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.0.sp,
+                                          fontWeight: FontWeight.normal,
+                                          fontStyle: FontStyle.normal),
+                                    ),
+                                  ])),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 25.0, top: 10),
-                              child: Text(
-                                'Chettinad,South Indian, Chinese',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.normal),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 0.3.sw,
-                            ),
-                            // const Padding(
-                            //   padding: EdgeInsets.only(left: 25.0, top: 10),
+                            // Padding(
+                            //   padding: EdgeInsets.only(left: 25.0.sp),
                             //   child: Text(
-                            //     'Sakthy traders, Gandhi Nagar, Coimbatore',
+                            //     'Hotel Annalakshmi',
                             //     style: TextStyle(
                             //         color: Colors.white,
-                            //         fontSize: 20,
+                            //         fontSize: 30,
                             //         fontWeight: FontWeight.normal,
                             //         fontStyle: FontStyle.normal),
                             //   ),
                             // ),
-                            SizedBox(
-                              height: 8.h,
-                            ),
+                            // const Padding(
+                            //   padding: EdgeInsets.only(left: 25.0, top: 10),
+                            //   child: Text(
+                            //     'Chettinad,South Indian, Chinese',
+                            //     style: TextStyle(
+                            //         color: Colors.white,
+                            //         fontSize: 25,
+                            //         fontWeight: FontWeight.normal,
+                            //         fontStyle: FontStyle.normal),
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   width: 0.3.sw,
+                            // ),
+                            // ),
+                            // SizedBox(
+                            //   height: 8.h,
+                            // ),
                             Row(
                               children: [
                                 Padding(
@@ -137,10 +159,10 @@ class _OrderState extends State<Order> {
                                       fontStyle: FontStyle.normal),
                                 ),
                               ),
-                               Padding(
+                              Padding(
                                 padding: EdgeInsets.only(left: 35.0, top: 10),
                                 child: Text(
-                               widget.  name,
+                                  widget.name,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 20,
@@ -373,7 +395,7 @@ class _OrderState extends State<Order> {
                           color: Color(0xff9A9A9A),
                         ),
                         Container(
-                          height: 1.sh,
+                          height: 110.0.hp,
                           color: Colors.white,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

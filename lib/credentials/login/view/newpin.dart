@@ -1,6 +1,7 @@
-import 'package:friendsdine/src/ui/login/view/otp.dart';
+// import 'package:friendsdine/src/ui/login/view/otp.dart';
 
 import '../../../../all_packages.dart';
+import 'otp.dart';
 
 class NewPin extends StatefulWidget {
   const NewPin({Key? key}) : super(key: key);
